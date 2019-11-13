@@ -1,37 +1,33 @@
 package com.example.demo3.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.UUID;
+import javax.persistence.*;
 
 @Entity
 @Table
-public class Notes {
+public class MyNotes {
 
-    //   @ GeneratedValue
     @Id
-    UUID id;
+    @GeneratedValue //(strategy = GenerationType.AUTO)
+    private long id;
 
     private String dateNote;
     private String urgencyNote;
     private String textNote;
 
-    public Notes(String dateNote, String urgencyNote, String textNote) {
+    public MyNotes(String dateNote, String urgencyNote, String textNote) {
         this.dateNote = dateNote;
         this.urgencyNote = urgencyNote;
         this.textNote = textNote;
     }
 
-    public Notes() {
+    public MyNotes() {
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,6 +1,6 @@
 package com.example.demo3.controller;
 
-import com.example.demo3.model.Notes;
+import com.example.demo3.model.MyNotes;
 import com.example.demo3.repo.MessageRepo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,27 +21,27 @@ public class MessageController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
-    public List<Notes> list() {
+    public List<MyNotes> list() {
         return messageRepo.findAll();
     }
 
     @GetMapping("{id}")
 //    @JsonView(Views.FullMessage.class)
     @CrossOrigin(origins = "http://localhost:3000")
-    public Notes getOne(@PathVariable("id") Notes message) {
+    public MyNotes getOne(@PathVariable("id") MyNotes message) {
         return message;
     }
 
     @PostMapping
     @CrossOrigin(origins = "http://localhost:3000")
-    public Notes create(@RequestBody Notes message) {
+    public MyNotes create(@RequestBody MyNotes message) {
         return messageRepo.save(message);
     }
 
     @PutMapping("{id}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public Notes update(@PathVariable("id") Notes messageFromDb,
-                          @RequestBody Notes message) {
+    public MyNotes update(@PathVariable("id") MyNotes messageFromDb,
+                          @RequestBody MyNotes message) {
         BeanUtils.copyProperties(message, messageFromDb, "id");
 
         return messageRepo.save(message);
@@ -49,7 +49,7 @@ public class MessageController {
 
     @DeleteMapping("{id}")
     @CrossOrigin(origins = "http://localhost:3000")
-    public void delete(@PathVariable("id") Notes message) {
+    public void delete(@PathVariable("id") MyNotes message) {
         messageRepo.delete(message);
 
     }

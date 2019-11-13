@@ -3,16 +3,26 @@ package com.example.demo3.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.UUID;
 
 @Entity
+@Table
 public class Notes {
+
+    //   @ GeneratedValue
     @Id
-    //@GeneratedValue
     UUID id;
+
     private String dateNote;
     private String urgencyNote;
     private String textNote;
+
+    public Notes(String dateNote, String urgencyNote, String textNote) {
+        this.dateNote = dateNote;
+        this.urgencyNote = urgencyNote;
+        this.textNote = textNote;
+    }
 
     public Notes() {
     }

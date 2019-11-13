@@ -7,5 +7,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.UUID;
 
 @RepositoryRestResource
-public interface NotesRepository extends JpaRepository<Notes, UUID> {
+public interface NotesRepository<Notes, UUID> extends JpaRepository<Notes, UUID> {
 }

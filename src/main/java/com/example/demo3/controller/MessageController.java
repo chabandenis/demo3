@@ -2,7 +2,6 @@ package com.example.demo3.controller;
 
 import com.example.demo3.model.Notes;
 import com.example.demo3.repo.MessageRepo;
-import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

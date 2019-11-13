@@ -1,6 +1,7 @@
 package com.example.demo3.model;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table
@@ -10,11 +11,11 @@ public class MyNotes {
     @GeneratedValue //(strategy = GenerationType.AUTO)
     private long id;
 
-    private String dateNote;
+    private LocalDateTime dateNote;
     private String urgencyNote;
     private String textNote;
 
-    public MyNotes(String dateNote, String urgencyNote, String textNote) {
+    public MyNotes(LocalDateTime dateNote, String urgencyNote, String textNote) {
         this.dateNote = dateNote;
         this.urgencyNote = urgencyNote;
         this.textNote = textNote;
@@ -31,11 +32,11 @@ public class MyNotes {
         this.id = id;
     }
 
-    public String getDateNote() {
+    public LocalDateTime getDateNote() {
         return dateNote;
     }
 
-    public void setDateNote(String dateNote) {
+    public void setDateNote(LocalDateTime dateNote) {
         this.dateNote = dateNote;
     }
 

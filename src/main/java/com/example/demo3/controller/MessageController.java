@@ -2,10 +2,14 @@ package com.example.demo3.controller;
 
 import com.example.demo3.model.MyNotes;
 import com.example.demo3.repo.MessageRepo;
+import org.apache.catalina.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
+import org.w3c.dom.Node;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -21,8 +25,8 @@ public class MessageController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
-    public List<MyNotes> list() {
-        return messageRepo.findAll();
+    public List<MyNotes> list(@RequestParam(value = "textNote", required = false) String textNote) {
+        return messageRepo.findAllText(textNote);
     }
 
     @GetMapping("{id}")
@@ -35,6 +39,7 @@ public class MessageController {
     @PostMapping
     @CrossOrigin(origins = "http://localhost:3000")
     public MyNotes create(@RequestBody MyNotes message) {
+        message.setDateNote(LocalDateTime.now());
         return messageRepo.save(message);
     }
 
@@ -44,7 +49,7 @@ public class MessageController {
                           @RequestBody MyNotes message) {
         BeanUtils.copyProperties(message, messageFromDb, "id");
 
-        return messageRepo.save(message);
+        return messageRepo.save(messageFromDb);
     }
 
     @DeleteMapping("{id}")
